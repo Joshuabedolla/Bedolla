@@ -1,0 +1,33 @@
+﻿@model IEnumerable<Joshua2.Models.Artista>
+
+<h1>Artistas</h1>
+
+@if (Model == null)
+{
+    <p class="text-danger">❌ El modelo está vacío (null)</p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>País</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var artista in Model)
+            {
+                <tr>
+                    <td>@artista.Nombre</td>
+                    <td>@artista.Pais</td>
+                    <td>
+                        <a href="@Url.Action("Edit", "Artista", new { id = artista.Id })">Editar</a> |
+                        <a href="@Url.Action("Delete", "Artista", new { id = artista.Id })">Eliminar</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

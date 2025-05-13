@@ -1,0 +1,40 @@
+@model Joshua2.Models.Cancion
+@{
+    ViewData["Title"] = "Editar Canción";
+}
+<h1>@ViewData["Title"]</h1>
+<form asp-action="Edit" method="post">
+    <input type="hidden" asp-for="Id" />
+    <div class="form-group">
+        <label asp-for="Titulo" class="control-label"></label>
+        <input asp-for="Titulo" class="form-control" />
+        <span asp-validation-for="Titulo" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Duracion" class="control-label"></label>
+        <input asp-for="Duracion" class="form-control" />
+        <span asp-validation-for="Duracion" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="AlbumId" class="control-label"></label>
+        <select asp-for="AlbumId" asp-items="@(new SelectList(ViewData["AlbumId"] as IEnumerable<dynamic>, "Value", "Text"))" class="form-control"></select>
+        <span asp-validation-for="AlbumId" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Artista" class="control-label"></label>
+        <input asp-for="Artista" class="form-control" />
+        <span asp-validation-for="Artista" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Genero" class="control-label"></label>
+        <input asp-for="Genero" class="form-control" />
+        <span asp-validation-for="Genero" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="FechaLanzamiento" class="control-label"></label>
+        <input asp-for="FechaLanzamiento" class="form-control" type="date" />
+        <span asp-validation-for="FechaLanzamiento" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+    <a asp-action="Index" class="btn btn-secondary">Volver</a>
+</form>

@@ -1,0 +1,39 @@
+@model IEnumerable<Joshua2.Models.Cancion>
+@{
+    ViewData["Title"] = "Listado de Canciones";
+}
+<h1>@ViewData["Title"]</h1>
+<p>
+    <a asp-action="Create" class="btn btn-primary">Crear nueva canción</a>
+</p>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Título</th>
+            <th>Duración</th>
+            <th>Álbum</th>
+            <th>Artista</th>
+            <th>Género</th>
+            <th>Fecha de Lanzamiento</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Titulo</td>
+                <td>@item.Duracion</td>
+                <td>@item.Album?.Titulo</td>
+                <td>@item.Artista</td>
+                <td>@item.Genero</td>
+                <td>@item.FechaLanzamiento.ToShortDateString()</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Editar</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Detalles</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Eliminar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
